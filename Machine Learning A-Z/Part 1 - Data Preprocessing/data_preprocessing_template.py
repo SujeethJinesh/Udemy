@@ -15,36 +15,36 @@ y = dataset.iloc[:, 3].values #These are the results
 #affect the median, and will have no effect on the mean of the whole data set.
 #removing the data point is disastrous, doing so could leave out extremely important
 #information.
-from sklearn.preprocessing import Imputer
+#from sklearn.preprocessing import Imputer
 
-np.set_printoptions(threshold = np.nan)
-imputer = Imputer(missing_values="NaN", strategy="mean", axis=0)
-imputer = imputer.fit(X[:, 1:3]) #upper bound is excluded
-X[:, 1:3] = imputer.transform(X[:, 1:3])
+#np.set_printoptions(threshold = np.nan)
+#imputer = Imputer(missing_values="NaN", strategy="mean", axis=0)
+#imputer = imputer.fit(X[:, 1:3]) #upper bound is excluded
+#X[:, 1:3] = imputer.transform(X[:, 1:3])
 
 #np.set_printoptions(threshold = np.nan)
 
 #Since we have multiple types of labels in our dataset, and it would be bad to 
 #have that appear in our machine learning model, we want to definitely change
 #it to one-hot, this will ensure that we represent each label correctly as a #
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+#from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 #The reason this labelEncoder is bad is because it gives each label a presumed
 #weight. This would be ideal if we can compare values that have a defined weight.
 #Ex: Large (3) > Medium (2) > Small (1). Hence it makes the most sense to do Label Encoding.
 
 #But we must do this step so that we can one hot encode.
-labelEncoder_X = LabelEncoder()
-X[:, 0] = labelEncoder_X.fit_transform(X[:, 0]) # NOTICE THIS IS BAD FOR THE CURRENT EXAMPLE
+#labelEncoder_X = LabelEncoder()
+#X[:, 0] = labelEncoder_X.fit_transform(X[:, 0]) # NOTICE THIS IS BAD FOR THE CURRENT EXAMPLE
 
 #However for this example it would be most ideal to instead use OneHotEncoder, because
 #We can't compare the countries easily
-oneHotEncoder = OneHotEncoder(categorical_features=[0])
-X = oneHotEncoder.fit_transform(X).toarray()
+#oneHotEncoder = OneHotEncoder(categorical_features=[0])
+#X = oneHotEncoder.fit_transform(X).toarray()
   
 #don't forget to do it for the purchased boolean col.
-labelEncoder_y = LabelEncoder()
-y = labelEncoder_y.fit_transform(y)
+#labelEncoder_y = LabelEncoder()
+#y = labelEncoder_y.fit_transform(y)
 
 
 #Ideally we want to split our dataset into a training and a test set,
@@ -61,11 +61,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 #are on different scales, then obviously if one has a much larger range than another
 #one of the features could be completely off.
 #We can use two methods to scale the features, standardization and normalization.
+"""
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.fit_transform(X_test)
-
+"""
 
 
 
