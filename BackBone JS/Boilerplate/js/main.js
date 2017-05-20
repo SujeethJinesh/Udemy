@@ -62,19 +62,38 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 //If we need to ensure that the model contains something, we use validation
-var Song = Backbone.Model.extend({
-    validate: function(attrs) {
-        if (!attrs.title) {
-            return "Title is required";
-        }
-    }
-})
+// var Song = Backbone.Model.extend({
+//     validate: function(attrs) {
+//         if (!attrs.title) {
+//             return "Title is required";
+//         }
+//     }
+// })
 
-var song = new Song(); //won't throw an error but will not be valid.
+// var song = new Song(); //won't throw an error but will not be valid.
 
-//to check if valid:
-song.isValid();
+// //to check if valid:
+// song.isValid();
 
 ////////////////////////////////////////////////////////////////////////////////////
 
 //Inheritance
+
+var Animal = Backbone.Model.extend({
+    walk: function() {
+        console.log("Animal walking...");
+    }
+});
+
+var Dog = Animal.extend({
+    walk: function() {
+        //If we want the super one/upper class one
+        Animal.prototype.walk(); // works like a static method
+        Animal.prototype.walk.apply(this); //this is to apply it to this.
+        console.log("Dog walking...");
+    }
+});
+
+var dog = new Dog();
+
+dog.walk();
