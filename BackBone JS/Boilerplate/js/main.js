@@ -79,21 +79,57 @@
 
 //Inheritance
 
-var Animal = Backbone.Model.extend({
-    walk: function() {
-        console.log("Animal walking...");
-    }
-});
+// var Animal = Backbone.Model.extend({
+//     walk: function() {
+//         console.log("Animal walking...");
+//     }
+// });
 
-var Dog = Animal.extend({
-    walk: function() {
-        //If we want the super one/upper class one
-        Animal.prototype.walk(); // works like a static method
-        Animal.prototype.walk.apply(this); //this is to apply it to this.
-        console.log("Dog walking...");
-    }
-});
+// var Dog = Animal.extend({
+//     walk: function() {
+//         //If we want the super one/upper class one
+//         Animal.prototype.walk(); // works like a static method
+//         Animal.prototype.walk.apply(this); //this is to apply it to this.
+//         console.log("Dog walking...");
+//     }
+// });
 
-var dog = new Dog();
+// var dog = new Dog();
 
-dog.walk();
+// dog.walk();
+
+////////////////////////////////////////////////////////////////////////////////////
+
+//Collections
+
+var Song = Backbone.Model.extend();
+
+var Songs = Backbone.Collection.extend({
+    model: Song
+})
+
+var songs = new Songs([
+    new Song({title: "Song 1"}),
+    new Song({title: "Song 2"}),
+    new Song({title: "Song 3"}),    
+]);
+
+songs.add(new Song({title: "Song 1"}));
+
+//All collections have a length and models property
+
+//indexing
+songs.at(0)
+
+//getting a particular one
+songs.get("c1")
+
+//removing
+songs.remove(songs.at(0))
+
+//length
+song.length
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
