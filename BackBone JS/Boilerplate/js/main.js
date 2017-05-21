@@ -128,8 +128,40 @@ songs.get("c1")
 songs.remove(songs.at(0))
 
 //length
-song.length
+songs.length
 
 ////////////////////////////////////////////////////////////////////////////////////
 
+//Adding to a collections
 
+songs.add(new Song({title: "Song 1", genre: "Jazz", downloads: 110}), {at: 0}); //push to certain indexing
+
+//orrrr you can do:
+
+songs.push(new Song({title: "Song 2", genre: "Jazz", downloads: 90}))
+
+//finding objects
+
+var jazzSongs = songs.where({genre: "Jazz"}) //Returns a collection
+
+var firstJazzSong = songs.findWhere({genre: "Jazz"})
+
+console.log("Jazz Songs", jazzSongs);
+
+console.log("First Jazz Songs", firstJazzSong);
+
+//Can filter further
+var filteredSongs = songs.where({genre: "Jazz", title: "Song 2"});
+console.log("Filtered Songs", filteredSongs);
+
+//If we want to filter by download numbers or something like that
+var topDownloads = songs.filter(function(song) {
+    return song.get("downloads") > 100;
+})
+
+console.log("Top Downloads", topDownloads);
+
+//Iterating through collection.
+songs.each(function(song) {
+    console.log(song);
+})
