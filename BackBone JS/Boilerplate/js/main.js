@@ -102,66 +102,68 @@
 
 //Collections
 
-var Song = Backbone.Model.extend();
+// var Song = Backbone.Model.extend();
 
-var Songs = Backbone.Collection.extend({
-    model: Song
-})
+// var Songs = Backbone.Collection.extend({
+//     model: Song
+// })
 
-var songs = new Songs([
-    new Song({title: "Song 1"}),
-    new Song({title: "Song 2"}),
-    new Song({title: "Song 3"}),    
-]);
+// var songs = new Songs([
+//     new Song({title: "Song 1"}),
+//     new Song({title: "Song 2"}),
+//     new Song({title: "Song 3"}),    
+// ]);
 
-songs.add(new Song({title: "Song 1"}));
+// songs.add(new Song({title: "Song 1"}));
 
-//All collections have a length and models property
+// //All collections have a length and models property
 
-//indexing
-songs.at(0)
+// //indexing
+// songs.at(0)
 
-//getting a particular one
-songs.get("c1")
+// //getting a particular one
+// songs.get("c1")
 
-//removing
-songs.remove(songs.at(0))
+// //removing
+// songs.remove(songs.at(0))
 
-//length
-songs.length
+// //length
+// songs.length
 
-////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////
 
-//Adding to a collections
+// //Adding to a collections
 
-songs.add(new Song({title: "Song 1", genre: "Jazz", downloads: 110}), {at: 0}); //push to certain indexing
+// songs.add(new Song({title: "Song 1", genre: "Jazz", downloads: 110}), {at: 0}); //push to certain indexing
 
-//orrrr you can do:
+// //orrrr you can do:
 
-songs.push(new Song({title: "Song 2", genre: "Jazz", downloads: 90}))
+// songs.push(new Song({title: "Song 2", genre: "Jazz", downloads: 90}))
 
-//finding objects
+// //finding objects
 
-var jazzSongs = songs.where({genre: "Jazz"}) //Returns a collection
+// var jazzSongs = songs.where({genre: "Jazz"}) //Returns a collection
 
-var firstJazzSong = songs.findWhere({genre: "Jazz"})
+// var firstJazzSong = songs.findWhere({genre: "Jazz"})
 
-console.log("Jazz Songs", jazzSongs);
+// console.log("Jazz Songs", jazzSongs);
 
-console.log("First Jazz Songs", firstJazzSong);
+// console.log("First Jazz Songs", firstJazzSong);
 
-//Can filter further
-var filteredSongs = songs.where({genre: "Jazz", title: "Song 2"});
-console.log("Filtered Songs", filteredSongs);
+// //Can filter further
+// var filteredSongs = songs.where({genre: "Jazz", title: "Song 2"});
+// console.log("Filtered Songs", filteredSongs);
 
-//If we want to filter by download numbers or something like that
-var topDownloads = songs.filter(function(song) {
-    return song.get("downloads") > 100;
-})
+// //If we want to filter by download numbers or something like that
+// var topDownloads = songs.filter(function(song) {
+//     return song.get("downloads") > 100;
+// })
 
-console.log("Top Downloads", topDownloads);
+// console.log("Top Downloads", topDownloads);
 
-//Iterating through collection.
-songs.each(function(song) {
-    console.log(song);
-})
+// //Iterating through collection.
+// songs.each(function(song) {
+//     console.log(song);
+// })
+
+
