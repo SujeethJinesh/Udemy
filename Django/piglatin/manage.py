@@ -2,6 +2,8 @@
 import os
 import sys
 
+#to run the server do "python manage.py runserver"
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "piglatin.settings")
     try:
