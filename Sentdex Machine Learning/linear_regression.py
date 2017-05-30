@@ -36,6 +36,8 @@ y = np.array(df['label'])
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2) # Splitting into training(80%) and testing(20%)
 
 classifier = LinearRegression() # classifier we are choosing
+# classifier = svm.SVR() # if you wanna switch the classifier, you can do this.
+# classifier = svm.SVR(kernel='poly') # can switch around the type as well
 
 classifier.fit(X_train, y_train) # fitting our classifier to the data
 accuracy = classifier.score(X_test, y_test) # scoring our data against the testing data
