@@ -5,6 +5,7 @@ from sklearn import preprocessing, cross_validation, svm
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt 
 from matplotlib import style
+import pickle
 
 style.use('ggplot') # make the plot look actually good
 
@@ -37,7 +38,6 @@ X = X[:-forecast_out]
 X_lately = X[-forecast_out:]
 
 df.dropna(inplace=True)
-y = np.array(df['label']) #
 y = np.array(df['label'])
 
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2) # Splitting into training(80%) and testing(20%)
@@ -48,6 +48,17 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 classifier = svm.SVR(kernel='rbf', C=1e3, gamma=0.1) # Seems like a decent fit, might wanna have multiple ones.
 
 classifier.fit(X_train, y_train) # fitting our classifier to the data
+
+##### Following is to save trained classifier
+
+with open('linearregression.pickle', 'wb') as f:
+    pickle.dump(classifier, f)
+
+pickle_in = open('linearregression.pickle', 'rb')
+classifier = pickle.load(pickle_in)
+
+#####
+
 accuracy = classifier.score(X_test, y_test) # scoring our data against the testing data
 
 forecast_set = classifier.predict(X_lately)
