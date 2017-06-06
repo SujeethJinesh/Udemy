@@ -27,9 +27,9 @@ forecast_col = 'Adj. Close' # label for what we want to predict
 # df.fillna(-9999, inplace=True) # replacing the nans with outlier data, might want to consider the avg of the column as well.
 df.apply(lambda x: x.fillna(x.mean()),axis=0) #this might help with replacing with the avg --> looks like it has very little effect on pred
 
-forecast_out = int(math.ceil(0.01*len(df))) # want to predict a data point 1% ahead. i.e. if you have 10 days of data, you can predict 1 day in advance
+forecast_out = int(math.ceil(0.02*len(df))) # want to predict a data point 1% ahead. i.e. if you have 10 days of data, you can predict 1 day in advance
 
-df['label'] = df[forecast_col].shift(-forecast_out) # Shifting out how far we wanna go?
+df['label'] = df[forecast_col].shift(forecast_out) # Shifting out how far we wanna go?
 # print(df.head())
 
 X = np.array(df.drop(['label'], 1)) # features
