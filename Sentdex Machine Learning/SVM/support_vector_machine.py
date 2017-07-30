@@ -19,7 +19,8 @@ y = np.array(df['class'])
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(X,y,test_size=0.2)
 
 # Importing our classifier
-classifier = svm.SVC()
+#SVM finds the best separating hyperplane for classification
+classifier = svm.SVC() #Support Vector Classifier
 
 # Fitting the classifer
 classifier.fit(X_train, y_train)
