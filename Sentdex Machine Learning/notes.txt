@@ -1,0 +1,12 @@
+Notes:
+
+1) When selecting what features to incorporate it's important to know what possibly effects the stock price. Think correlation not causation.
+
+2) If you have two things that have very close relations, then it might not be the best idea to include both, might end up giving too much weight to those specific features.
+
+3) Simple relationships are valuable, like between open and close price, but your regression model won't be able to accurately sift it out with so many features
+
+4) A lot of times data isn't all there. Replace Nan data with outliers, because you definitely don't want to sacrifice data.
+
+5) Very important for real time data processing. You need to scale your new stream of values with your old historic data. This will ensure that the features are scaled properly.
+

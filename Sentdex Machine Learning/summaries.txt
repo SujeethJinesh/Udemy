@@ -1,3 +1,0 @@
-KNN - Find the K nearest neighbors to a point. This will then classify the point.
-Regression - can be used to predict future values
-SVM - 
