@@ -10,3 +10,8 @@ Notes:
 
 5) Very important for real time data processing. You need to scale your new stream of values with your old historic data. This will ensure that the features are scaled properly.
 
+6) Make sure to do cross validation, this prevents the model from being too specific and overfitting
+
+7) Generally you want these models to be trained in many threads. Look for "n_jobs" in sklearn.
+
+8)
